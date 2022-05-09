@@ -13,17 +13,17 @@ class Directory extends Component {
     }
 
     static navigationOptions = {
-        title: 'Directory'
+        title: 'Directory'          //set header title for directory
     }
 
     render() {
-        const { navigate } = this.props.navigation;
+        const { navigate } = this.props.navigation; //taking only navigate from react navigation
         const renderDirectoryItem = ({item}) => {
             return (
                 <ListItem
                     title={item.name}
                     subtitle={item.description}
-                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })} //arguments where to navigate to and id of pressed campsite
                     leftAvatar={{ source: require('./images/react-lake.jpg')}}
                 />
             );
