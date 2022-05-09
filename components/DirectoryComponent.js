@@ -1,27 +1,42 @@
-import  React from "react";
+import  React, { Component } from "react";
 import { FlatList } from "react-native";            //wraps all list items
 import { ListItem } from "react-native-elements";     //wraps each indvidual item
+import { CAMPSITES } from '../shared/campsites'
 
-function Directory(props){
-    
-    const renderDirectoryItem = ({item}) => {
-        return (
-            <ListItem
-                title={item.name}
-                subtitle={item.description}
-                onPress={() => props.onPress(item.id)}
-                leftAvatar={{source: require('./images/react-lake.jpg')}}
-            />   
-        )
+class Directory extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            campsites: CAMPSITES
+        };
     }
 
-    return(
-        <FlatList
-            data={props.campsites}
-            renderItem={renderDirectoryItem}
-            keyExtractor = {item => item.id.toString()} //expects string so convert id to string
-        />
-    )
+    static navigationOptions = {
+        title: 'Directory'
+    }
+
+    render() {
+        const { navigate } = this.props.navigation;
+        const renderDirectoryItem = ({item}) => {
+            return (
+                <ListItem
+                    title={item.name}
+                    subtitle={item.description}
+                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                    leftAvatar={{ source: require('./images/react-lake.jpg')}}
+                />
+            );
+        };
+
+        return (
+            <FlatList
+                data={this.state.campsites}
+                renderItem={renderDirectoryItem}
+                keyExtractor={item => item.id.toString()}
+            />
+        );
+    }
 }
 
 export default Directory
