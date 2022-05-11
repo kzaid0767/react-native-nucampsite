@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { FlatList } from 'react-native-gesture-handler';
 import { PARTNERS } from '../shared/partners';
