@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Text, ScrollView, FlatList } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
-//import { FlatList } from 'react-native-gesture-handler';
-//import { PARTNERS } from '../shared/partners';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
@@ -43,6 +42,30 @@ class About extends Component {
             );
         }
 
+        if (this.props.partners.isLoading) {
+            return (
+                <ScrollView>
+                    <Mission />
+                    <Card
+                        title='Community Partners'>
+                        <Loading />
+                    </Card>
+                </ScrollView>
+            );
+        }
+        if (this.props.partners.errMess) {
+            return (
+                <ScrollView>
+                    <Mission />
+                    <Card
+                        title='Community Partners'>
+                        <Text>{this.props.partners.errMess}</Text>
+                    </Card>
+                </ScrollView>
+            );
+        }
+
+        //need this.props.parteners.parteners to get only partners array
         return (
             <ScrollView>            
                 <Mission />
@@ -58,4 +81,4 @@ class About extends Component {
     }
 }
 
-export default connect(mapStateToProps)(About)
+export default connect(mapStateToProps)(About)       //this wrapping allows About to receive partner props

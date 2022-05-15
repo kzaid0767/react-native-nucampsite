@@ -246,4 +246,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(null, mapDispatchToProps)(Main);   //no mapStateToProps for first argument so null is give as first argument
