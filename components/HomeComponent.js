@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 function RenderItem(props) {
     const item = props;
-
+    
     if (props.isLoading) {
         return <Loading />;
     }
@@ -29,6 +29,7 @@ function RenderItem(props) {
 
     if (item) {
         return (
+            
             <Card
                 featuredTitle={item.name}
                 image={{uri: baseUrl + item.image}}
