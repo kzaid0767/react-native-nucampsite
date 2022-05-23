@@ -30,7 +30,7 @@ function RenderComments({comments}) {
                         readonly
                         startingValue={item.rating}
                         imageSize={10}
-                        style={{alignItems:'flex-start', paddingVertical:5}}
+                        style={{alignItems:'flex-start', paddingVertical:'5%'}}
                         />
                 <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
             </View>
@@ -160,12 +160,14 @@ class CampsiteInfo extends Component {
                         leftIcon={{type:'font-awesome', name:'user-o'}}
                         paddingRight={10}
                         onChangeText={author => this.setState({author:author})}
+                        value={this.state.author}
                         />
                         <Input
                         placeholder='comment'
                         leftIcon={{type:'font-awesome', name:'comment-o'}}
                         paddingRight={10}
                         onChangeText={text => this.setState({text:text})}
+                        value={this.state.text}
                         />
                         <View style={{margin:10}}>
                             <Button
